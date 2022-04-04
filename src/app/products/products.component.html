@@ -1,0 +1,27 @@
+<input type="text" value="" [(ngModel)]="searchText">
+
+<table class="table">
+    <thead>
+        <th>id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>quantity</th>
+        <th>like</th>
+        <th>action</th>
+    </thead>
+    <tbody *ngFor="let i of listProdcut; let index = index;">
+        <tr class="table-active" *ngIf="i.price <= searchText">
+            
+                <td>{{i.id}}</td>
+                <td>{{i.title}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.like}}</td>
+                <td><button mat-raised-button color="primary" (click)="addLike(index)">like</button>
+                    <button mat-raised-button (click)="Buy(index)" [disabled]="i.quantity==0">buy</button>
+                </td>
+            
+        </tr>
+
+    </tbody>
+</table>
